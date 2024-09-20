@@ -18,41 +18,44 @@ drive.mount('/content/gdrive')
 
 ## Descrição das Colunas
 
-| Coluna               | Tipo de Dados | Descrição                                                                                                                                 |
-|----------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| `series_animedb_id`  | Inteiro       | Identificação única da série no banco de dados.                                                                                           |
-| `series_title`       | Texto         | Título da série.                                                                                                                          |
-| `series_type`        | Texto         | Tipo da série (TV, OVA, Filme, etc.).                                                                                                     |
-| `series_episodes`    | Inteiro       | Número total de episódios da série.                                                                                                       |
-| `my_id`              | Inteiro       | Identificação única da série.                                                                                                           |
-| `my_watched_episodes`| Inteiro       | Número de episódios assistidos pelo usuário.                                                                                              |
-| `my_start_date`      | Data          | Data em que o usuário começou a assistir a série.                                                                                         |
-| `my_finish_date`     | Data          | Data em que o usuário terminou de assistir a série (se aplicável).                                                                        |
-| `my_rated`           | Inteiro       | Indicador de avaliação pelo usuário (0 para não avaliado, 1 para avaliado).                                                               |
-| `my_score`           | Inteiro       | Nota atribuída pelo usuário à série (0-10).                                                                                               |
-| `my_storage`         | Texto         | Tipo de armazenamento da série (se está salvo localmente ou em outro tipo de mídia).                                                      |
-| `my_storage_value`   | Inteiro       | Valor associado ao armazenamento (0 para inexistente, 1 para presente).                                                                   |
-| `my_status`          | Texto         | Status atual da série para o usuário (Ex: "Completed", "Watching").                                                                       |
-| `my_comments`        | Texto         | Comentários pessoais do usuário sobre a série.                                                                                            |
-| `my_times_watched`   | Inteiro       | Número de vezes que o usuário assistiu a série novamente.                                                                                 |
-| `my_rewatch_value`   | Inteiro       | Valor de rewatch atribuído pelo usuário (1 para sim, 0 para não).                                                                         |
-| `my_priority`        | Texto         | Prioridade atribuída à série (LOW, MEDIUM, HIGH).                                                                                         |
-| `my_tags`            | Texto         | Tags associadas à série pelo usuário.                                                                                                     |
-| `my_rewatching`      | Inteiro       | Indicador se o usuário está reassistindo a série (1 para sim, 0 para não).                                                                |
-| `my_rewatching_ep`   | Inteiro       | Número de episódios assistidos durante o rewatch.                                                                                         |
-| `my_discuss`         | Texto         | Discussão ou tópicos relacionados à série.                                                                                                |
-| `my_sns`             | Texto         | SNS ou rede social associada à série (por exemplo, plataforma de discussão).                                                              |
-| `update_on_import`   | Inteiro       | Indicador se os dados devem ser atualizados na importação (1 para sim, 0 para não).                                                       |
+| Coluna               | Tipo de Dados | Descrição                                                                                                                              |
+|----------------------|---------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| `series_animedb_id`   | Inteiro       | Identificação única da série no banco de dados.                                                                                        |
+| `series_title`        | Texto         | Título da série.                                                                                                                       |
+| `series_type`         | Texto         | Tipo da série (TV, OVA, Filme, etc.).                                                                                                  |
+| `series_episodes`     | Inteiro       | Número total de episódios da série.                                                                                                    |
+| `my_id`               | Inteiro       | Identificação única da série.                                                                                                          |
+| `my_watched_episodes` | Inteiro       | Número de episódios assistidos pelo usuário.                                                                                           |
+| `my_start_date`       | Data          | Data em que o usuário começou a assistir a série.                                                                                      |
+| `my_finish_date`      | Data          | Data em que o usuário terminou de assistir a série (se aplicável).                                                                     |
+| `my_rated`            | Inteiro       | Indicador de avaliação pelo usuário (0 para não avaliado, 1 para avaliado).                                                            |
+| `my_score`            | Inteiro       | Nota atribuída pelo usuário à série (0-10).                                                                                            |
+| `my_storage`          | Texto         | Tipo de armazenamento da série (se está salvo localmente ou em outro tipo de mídia).                                                   |
+| `my_storage_value`    | Inteiro       | Valor associado ao armazenamento (0 para inexistente, 1 para presente).                                                                |
+| `my_status`           | Texto         | Status atual da série para o usuário (Ex: "Completed", "Watching").                                                                    |
+| `my_comments`         | Texto         | Comentários pessoais do usuário sobre a série.                                                                                         |
+| `my_times_watched`    | Inteiro       | Número de vezes que o usuário assistiu a série novamente.                                                                              |
+| `my_rewatch_value`    | Inteiro       | Valor de rewatch atribuído pelo usuário (1 para sim, 0 para não).                                                                      |
+| `my_priority`         | Texto         | Prioridade atribuída à série (LOW, MEDIUM, HIGH).                                                                                      |
+| `my_tags`             | Texto         | Tags associadas à série pelo usuário.                                                                                                  |
+| `my_rewatching`       | Inteiro       | Indicador se o usuário está reassistindo a série (1 para sim, 0 para não).                                                             |
+| `my_rewatching_ep`    | Inteiro       | Número de episódios assistidos durante o rewatch.                                                                                      |
+| `my_discuss`          | Texto         | Discussão ou tópicos relacionados à série.                                                                                             |
+| `my_sns`              | Texto         | SNS ou rede social associada à série (por exemplo, plataforma de discussão).                                                           |
+| `update_on_import`    | Inteiro       | Indicador se os dados devem ser atualizados na importação (1 para sim, 0 para não).                                                    |
+| `global_score`        | Decimal       | Nota média global da série.                                                                                                            |
+| `studio`              | Lista         | Estúdios que produziram a série.                                                                                                        |
+| `genres`              | Lista         | Gêneros da série.                                                                                                                       |
+| `theme`               | Lista         | Temas abordados na série.                                                                                                              |
+| `demographic`         | Texto         | Demográfico para o qual a série é direcionada (por exemplo, Seinen, Shonen).                                                           |
 
 ### Exemplo de Entrada:
 
-| series_animedb_id | series_title                          | series_type | series_episodes | my_id | my_watched_episodes | my_start_date | my_finish_date | my_rated | my_score | my_storage | my_storage_value | my_status  | my_comments                                                                                           | my_times_watched | my_rewatch_value | my_priority | my_tags   | my_rewatching | my_rewatching_ep | my_discuss | my_sns   | update_on_import |
-|-------------------|---------------------------------------|-------------|-----------------|-------|---------------------|---------------|----------------|----------|----------|------------|------------------|------------|--------------------------------------------------------------------------------------------------------|------------------|------------------|-------------|-----------|---------------|------------------|------------|----------|------------------|
-| 52034             | "Oshi no Ko"                          | TV          | 11              | 0     | 11                  | 2023-04-12    | 2023-06-28     |          | 1        |            | 0                | Completed  | 🥈: Indiscutivelmente bem produzido, porém raso em conteúdo.                                           | 0                | 0                | LOW         | 🥈        | 0             | 1                | default    | 0        |                  |
-| 55791             | "Oshi no Ko" 2nd Season               | TV          | 13              | 0     | 9                   | 2024-07-03    | 0000-00-00     |          | 6        |            | 0                | Watching   |                                                                                                | 0                | 0                | LOW         |           | 0             | 1                | default    | 0        |                  |
-| 1583              | 009-1                                 | TV          | 12              | 0     | 12                  | 2024-01-23    | 2024-01-26     |          | 4        |            | 0                | Completed  | Poderia resumir bastante e dizer que ele é simplesmente desinteressante.                                | 0                | 0                | LOW         |           | 0             | 1                | default    | 0        |                  |
-
-
+| series_animedb_id | series_title            | series_type | series_episodes | my_id | my_watched_episodes | my_start_date | my_finish_date | my_rated | my_score | my_storage | my_storage_value | my_status  | my_comments                                                                                | my_times_watched | my_rewatch_value | my_priority | my_tags   | my_rewatching | my_rewatching_ep | my_discuss | my_sns   | update_on_import | global_score | studio       | genres                        | theme                                  | demographic |
+|-------------------|-------------------------|-------------|-----------------|-------|---------------------|---------------|----------------|----------|----------|------------|------------------|------------|---------------------------------------------------------------------------------------------------|------------------|------------------|-------------|-----------|---------------|------------------|------------|----------|------------------|--------------|--------------|-------------------------------|----------------------------------------|-------------|
+| 52034             | "Oshi no Ko"            | TV          | 11              | 0     | 11                  | 2023-04-12    | 2023-06-28     |          | 1        |            | 0                | Completed  | 🥈: Indiscutivelmente bem produzido, porém raso em conteúdo.                                      | 0                | 0                | LOW         | 🥈        | 0             | 1                | default    | 0        |                  | 8.4          | ['Shaft']   | ['Drama', 'Slice of Life'] | ['Childcare', 'Iyashikei', 'Strategy Game'] | Seinen      |
+| 55791             | "Oshi no Ko" 2nd Season | TV          | 13              | 0     | 9                   | 2024-07-03    | 0000-00-00     |          | 6        |            | 0                | Watching   |                                                                                                | 0                | 0                | LOW         |           | 0             | 1                | default    | 0        |                  | 8.96         | ['Shaft']   | ['Drama', 'Slice of Life'] | ['Childcare', 'Iyashikei', 'Strategy Game'] | Seinen      |
+| 1583              | 009-1                   | TV          | 12              | 0     | 12                  | 2024-01-23    | 2024-01-26     |          | 4        |            | 0                | Completed  | Poderia resumir bastante e dizer que ele é simplesmente desinteressante.                            | 0                | 0                | LOW         |           | 0             | 1                | default    | 0        |                  |              |              |                               |                                        |             |
 
 """
 
@@ -505,4 +508,287 @@ ax.legend(title='Ano')
 ax.grid(True)
 
 plt.tight_layout()
+plt.show()
+
+def clean_studio_names(studio_list):
+    if isinstance(studio_list, str):
+        studio_list = studio_list.strip('[]').replace("'", "").split(', ')
+    return studio_list
+
+animelist['studio'] = animelist['studio'].apply(clean_studio_names)
+
+animelist_exploded = animelist['studio'].explode()
+
+studio_counts = animelist_exploded.value_counts()
+
+top_studios = studio_counts.head(10)
+
+fig, ax = plt.subplots(figsize=(12, 8))
+
+bars = ax.bar(top_studios.index, top_studios.values, color=plt.cm.Paired(range(len(top_studios))), edgecolor='black')
+
+for bar in bars:
+    height = bar.get_height()
+    ax.text(bar.get_x() + bar.get_width() / 2., height, f'{height}', ha='center', va='bottom', fontsize=12)
+
+ax.set_xlabel('Estúdio', fontsize=14)
+ax.set_ylabel('Número de Animes', fontsize=14)
+ax.set_title('Top 10 Estúdios com Mais Animes', fontsize=16, fontweight='bold', pad=20)
+ax.set_xticklabels(top_studios.index, rotation=45, ha='right')
+ax.grid(axis='y', linestyle='--', alpha=0.7)
+
+plt.tight_layout()
+plt.show()
+
+animelist_exploded = animelist[['studio', 'my_score']].explode('studio')
+
+studio_counts = animelist_exploded['studio'].value_counts()
+
+frequent_studios = studio_counts[studio_counts > 10].index
+
+filtered_df = animelist_exploded[animelist_exploded['studio'].isin(frequent_studios)]
+
+studio_avg_scores = filtered_df.groupby('studio')['my_score'].mean()
+
+top_studios_avg_scores = studio_avg_scores.sort_values(ascending=False).head(10)
+
+fig, ax = plt.subplots(figsize=(12, 8))
+
+bars = ax.bar(top_studios_avg_scores.index, top_studios_avg_scores.values, color=plt.cm.Paired(range(len(top_studios_avg_scores))), edgecolor='black')
+
+for bar in bars:
+    height = bar.get_height()
+    ax.text(bar.get_x() + bar.get_width() / 2., height, f'{height:.2f}', ha='center', va='bottom', fontsize=12)
+
+ax.set_xlabel('Estúdio', fontsize=14)
+ax.set_ylabel('Nota Média', fontsize=14)
+ax.set_title('Top 10 Estúdios com Maiores Notas Médias (Mais de 10 Animes)', fontsize=16, fontweight='bold', pad=20)
+ax.set_xticklabels(top_studios_avg_scores.index, rotation=45, ha='right')
+ax.grid(axis='y', linestyle='--', alpha=0.7)
+
+plt.tight_layout()
+plt.show()
+
+def clean_genre_names(genre_list):
+    if isinstance(genre_list, str):
+        genre_list = genre_list.strip('[]').replace("'", "").split(', ')
+    return genre_list
+
+animelist['genres'] = animelist['genres'].apply(clean_genre_names)
+
+animelist_exploded = animelist[['genres', 'my_score']].explode('genres')
+
+global_mean_score = animelist['my_score'].mean()
+
+genre_std_devs = animelist_exploded.groupby('genres')['my_score'].std()
+
+genre_mean_scores = animelist_exploded.groupby('genres')['my_score'].mean()
+genre_deviation_from_global = genre_mean_scores - global_mean_score
+
+fig, ax = plt.subplots(figsize=(12, 8))
+
+bars = ax.bar(genre_std_devs.index, genre_std_devs.values, color=plt.cm.Paired(range(len(genre_std_devs))), edgecolor='black')
+
+for bar in bars:
+    height = bar.get_height()
+    ax.text(bar.get_x() + bar.get_width() / 2., height, f'{height:.2f}', ha='center', va='bottom', fontsize=12)
+
+ax.set_xlabel('Gênero', fontsize=14)
+ax.set_ylabel('Desvio Padrão das Notas', fontsize=14)
+ax.set_title('Desvio Padrão das Notas por Gênero', fontsize=16, fontweight='bold', pad=20)
+ax.set_xticklabels(genre_std_devs.index, rotation=45, ha='right')
+ax.grid(axis='y', linestyle='--', alpha=0.7)
+
+plt.tight_layout()
+plt.show()
+
+animelist['genres'] = animelist['genres'].apply(clean_genre_names)
+
+animelist_exploded = animelist[['genres', 'studio']].explode('genres')
+
+animelist_exploded['studio'] = animelist_exploded['studio'].fillna('').astype(str)
+
+studio_deen_animes = animelist_exploded[animelist_exploded['studio'].apply(lambda x: 'Studio Deen' in x)]
+
+total_studio_deen_animes = len(studio_deen_animes)
+
+genre_probabilities = studio_deen_animes['genres'].value_counts() / total_studio_deen_animes
+
+filtered_genre_probabilities = genre_probabilities[genre_probabilities > 0.07]
+
+fig, ax = plt.subplots(figsize=(12, 8))
+
+bars = ax.bar(filtered_genre_probabilities.index, filtered_genre_probabilities.values, color=plt.cm.Paired(range(len(filtered_genre_probabilities))), edgecolor='black')
+
+for bar in bars:
+    height = bar.get_height()
+    ax.text(bar.get_x() + bar.get_width() / 2., height, f'{height:.2%}', ha='center', va='bottom', fontsize=12)
+
+ax.set_xlabel('Gênero', fontsize=14)
+ax.set_ylabel('Probabilidade (%)', fontsize=14)
+ax.set_title('Probabilidade de um Anime ser de um Gênero Específico e do Studio Deen (Mais de 7%)', fontsize=16, fontweight='bold', pad=20)
+ax.set_xticklabels(filtered_genre_probabilities.index, rotation=45, ha='right')
+ax.grid(axis='y', linestyle='--', alpha=0.7)
+
+plt.tight_layout()
+plt.show()
+
+def clean_demographic_names(demographic_list):
+    if isinstance(demographic_list, str):
+        demographic_list = demographic_list.strip('[]').replace("'", "").split(', ')
+    return demographic_list
+
+animelist['demographic'] = animelist['demographic'].apply(clean_demographic_names)
+
+animelist_exploded = animelist[['demographic', 'my_score']].explode('demographic')
+
+demographic_std_devs = animelist_exploded.groupby('demographic')['my_score'].std()
+
+demographic_mean_scores = animelist_exploded.groupby('demographic')['my_score'].mean()
+
+demographic_deviation_from_global = demographic_mean_scores - global_mean_score
+
+fig, ax = plt.subplots(figsize=(12, 8))
+
+bars = ax.bar(demographic_std_devs.index, demographic_std_devs.values, color=plt.cm.Paired(range(len(demographic_std_devs))), edgecolor='black')
+
+for bar in bars:
+    height = bar.get_height()
+    ax.text(bar.get_x() + bar.get_width() / 2., height, f'{height:.2f}', ha='center', va='bottom', fontsize=12)
+
+ax.set_xlabel('Demografia', fontsize=14)
+ax.set_ylabel('Desvio Padrão das Notas', fontsize=14)
+ax.set_title('Desvio Padrão das Notas por Demografia', fontsize=16, fontweight='bold', pad=20)
+ax.set_xticklabels(demographic_std_devs.index, rotation=45, ha='right')
+ax.grid(axis='y', linestyle='--', alpha=0.7)
+
+plt.tight_layout()
+plt.show()
+
+animelist = pd.read_csv('/content/gdrive/MyDrive/Colab Notebooks/animelist.csv')
+
+def clean_list(column):
+    if isinstance(column, str):
+        return column.strip('[]').replace("'", "").split(', ')
+    return []
+
+animelist['genres'] = animelist['genres'].apply(clean_list)
+animelist['demographic'] = animelist['demographic'].apply(clean_list)
+
+animelist_genres_exploded = animelist[['genres', 'demographic']].explode('genres')
+animelist_demographics_exploded = animelist[['genres', 'demographic']].explode('demographic')
+
+action_animes = animelist_genres_exploded[animelist_genres_exploded['genres'] == 'Action']
+
+total_action_animes = len(action_animes)
+
+demographic_distribution = action_animes['demographic'].explode().value_counts() / total_action_animes * 100
+
+fig, ax = plt.subplots(figsize=(12, 8))
+
+bars = ax.bar(demographic_distribution.index, demographic_distribution.values, color=plt.cm.Paired(range(len(demographic_distribution))), edgecolor='black')
+
+for bar in bars:
+    height = bar.get_height()
+    ax.text(bar.get_x() + bar.get_width() / 2., height, f'{height:.2f}%', ha='center', va='bottom', fontsize=12)
+
+ax.set_xlabel('Demografia', fontsize=14)
+ax.set_ylabel('Probabilidade (%)', fontsize=14)
+ax.set_title('Probabilidade de um Anime Ser de Cada Demografia Dado que é do Gênero Ação', fontsize=16, fontweight='bold', pad=20)
+ax.set_xticklabels(demographic_distribution.index, rotation=45, ha='right')
+ax.grid(axis='y', linestyle='--', alpha=0.7)
+
+plt.tight_layout()
+plt.show()
+
+animelist = pd.read_csv('/content/gdrive/MyDrive/Colab Notebooks/animelist.csv')
+
+def clean_list(column):
+    if isinstance(column, str):
+        return column.strip('[]').replace("'", "").split(', ')
+    return []
+
+animelist['genres'] = animelist['genres'].apply(clean_list)
+animelist['demographic'] = animelist['demographic'].apply(clean_list)
+
+animelist_genres_exploded = animelist[['genres', 'demographic']].explode('genres')
+animelist_demographics_exploded = animelist[['genres', 'demographic']].explode('demographic')
+
+action_animes = animelist_genres_exploded[animelist_genres_exploded['genres'] == 'Comedy']
+
+total_action_animes = len(action_animes)
+
+demographic_distribution = action_animes['demographic'].explode().value_counts() / total_action_animes * 100
+
+fig, ax = plt.subplots(figsize=(12, 8))
+
+bars = ax.bar(demographic_distribution.index, demographic_distribution.values, color=plt.cm.Paired(range(len(demographic_distribution))), edgecolor='black')
+
+for bar in bars:
+    height = bar.get_height()
+    ax.text(bar.get_x() + bar.get_width() / 2., height, f'{height:.2f}%', ha='center', va='bottom', fontsize=12)
+
+ax.set_xlabel('Demografia', fontsize=14)
+ax.set_ylabel('Probabilidade (%)', fontsize=14)
+ax.set_title('Probabilidade de um Anime Ser de Cada Demografia Dado que é do Gênero Comédia', fontsize=16, fontweight='bold', pad=20)
+ax.set_xticklabels(demographic_distribution.index, rotation=45, ha='right')
+ax.grid(axis='y', linestyle='--', alpha=0.7)
+
+plt.tight_layout()
+plt.show()
+
+import seaborn as sns
+animelist['genres'] = animelist['genres'].apply(clean_genre_names)
+
+animelist_exploded = animelist[['genres']].explode('genres')
+
+animelist_exploded = animelist_exploded.dropna(subset=['genres'])
+
+genres = animelist_exploded['genres'].unique()
+
+presence_matrix = pd.DataFrame(0, index=genres, columns=genres)
+
+for i, genre1 in enumerate(genres):
+    for genre2 in genres:
+        if genre1 != genre2:
+            count_both = animelist[animelist['genres'].apply(lambda x: genre1 in x and genre2 in x)].shape[0]
+            count_any = animelist[animelist['genres'].apply(lambda x: genre1 in x or genre2 in x)].shape[0]
+            if count_any > 0:
+                presence_matrix.at[genre1, genre2] = count_both / count_any * 100
+
+plt.figure(figsize=(12, 8))
+sns.heatmap(presence_matrix, annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5, vmin=0, vmax=100)
+plt.title('Probabilidade de Ocorrência Conjunta de Gêneros em %', fontsize=16, fontweight='bold', pad=20)
+plt.xlabel('Gênero')
+plt.ylabel('Gênero')
+plt.xticks(rotation=45, ha='right')
+plt.yticks(rotation=0)
+plt.tight_layout()
+plt.show()
+
+def calculate_probability(animelist, genre):
+    count_genre = animelist[animelist['genres'].apply(lambda x: genre in x)].shape[0]
+    total_animes = animelist.shape[0]
+    return count_genre / total_animes
+
+def cumulative_distribution(prob):
+    return np.cumsum(prob)
+
+prob_X = calculate_probability(animelist, 'Action')
+prob_Y = calculate_probability(animelist, 'Adventure')
+
+probs_X = np.linspace(0, prob_X, 100)
+probs_Y = np.linspace(0, prob_Y, 100)
+
+cdf_X = cumulative_distribution(probs_X)
+cdf_Y = cumulative_distribution(probs_Y)
+
+plt.figure(figsize=(10, 6))
+plt.plot(probs_X, cdf_X, label='CDF Ação', color='blue')
+plt.plot(probs_Y, cdf_Y, label='CDF Aventura', color='green')
+plt.title('Função de Distribuição Cumulativa para Ação e Aventura')
+plt.xlabel('Probabilidade')
+plt.ylabel('Distribuição Cumulativa')
+plt.legend()
+plt.grid(True)
 plt.show()
