@@ -10,9 +10,11 @@ Original file is located at
 import pandas as pd
 import numpy as np
 
-from google.colab import drive
+from google.colab import files
+uploaded = files.upload()
 
-drive.mount('/content/gdrive')
+animelist = pd.read_csv('animelist.csv')
+animelist.head(3)
 
 """# Documentação da Tabela de Séries
 
@@ -58,9 +60,6 @@ drive.mount('/content/gdrive')
 | 1583              | 009-1                   | TV          | 12              | 0     | 12                  | 2024-01-23    | 2024-01-26     |          | 4        |            | 0                | Completed  | Poderia resumir bastante e dizer que ele é simplesmente desinteressante.                            | 0                | 0                | LOW         |           | 0             | 1                | default    | 0        |                  |              |              |                               |                                        |             |
 
 """
-
-animelist = pd.read_csv('/content/gdrive/MyDrive/Colab Notebooks/animelist.csv')
-animelist.head(3)
 
 probcomplete = len(animelist[animelist['my_status']== 'Completed']) / len(animelist)
 
@@ -665,7 +664,7 @@ ax.grid(axis='y', linestyle='--', alpha=0.7)
 plt.tight_layout()
 plt.show()
 
-animelist = pd.read_csv('/content/gdrive/MyDrive/Colab Notebooks/animelist.csv')
+animelist = pd.read_csv('animelist.csv')
 
 def clean_list(column):
     if isinstance(column, str):
@@ -701,8 +700,7 @@ ax.grid(axis='y', linestyle='--', alpha=0.7)
 plt.tight_layout()
 plt.show()
 
-animelist = pd.read_csv('/content/gdrive/MyDrive/Colab Notebooks/animelist.csv')
-
+animelist = pd.read_csv('animelist.csv')
 def clean_list(column):
     if isinstance(column, str):
         return column.strip('[]').replace("'", "").split(', ')
@@ -738,6 +736,11 @@ plt.tight_layout()
 plt.show()
 
 import seaborn as sns
+def clean_genre_names(genre_list):
+    if isinstance(genre_list, str):
+        genre_list = genre_list.strip('[]').replace("'", "").split(', ')
+    return genre_list
+
 animelist['genres'] = animelist['genres'].apply(clean_genre_names)
 
 animelist_exploded = animelist[['genres']].explode('genres')
@@ -751,8 +754,8 @@ presence_matrix = pd.DataFrame(0, index=genres, columns=genres)
 for i, genre1 in enumerate(genres):
     for genre2 in genres:
         if genre1 != genre2:
-            count_both = animelist[animelist['genres'].apply(lambda x: genre1 in x and genre2 in x)].shape[0]
-            count_any = animelist[animelist['genres'].apply(lambda x: genre1 in x or genre2 in x)].shape[0]
+            count_both = animelist[animelist['genres'].apply(lambda x: isinstance(x, list) and genre1 in x and genre2 in x)].shape[0]
+            count_any = animelist[animelist['genres'].apply(lambda x: isinstance(x, list) and (genre1 in x or genre2 in x))].shape[0]
             if count_any > 0:
                 presence_matrix.at[genre1, genre2] = count_both / count_any * 100
 
@@ -766,29 +769,67 @@ plt.yticks(rotation=0)
 plt.tight_layout()
 plt.show()
 
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+animelist = pd.read_csv('animelist.csv')
+
+def clean_genre_names(genre_list):
+    """Função para limpar e converter a string de gêneros em uma lista."""
+    if isinstance(genre_list, str):
+        genre_list = genre_list.strip('[]').replace("'", "").split(', ')
+    return genre_list
+
+animelist['genres'] = animelist['genres'].apply(clean_genre_names)
+
 def calculate_probability(animelist, genre):
-    count_genre = animelist[animelist['genres'].apply(lambda x: genre in x)].shape[0]
+
+    if 'genres' not in animelist.columns:
+        return 0
+
+    count_genre = animelist[animelist['genres'].apply(lambda x: isinstance(x, list) and genre in x)].shape[0]
     total_animes = animelist.shape[0]
+
+    if total_animes == 0:
+        return 0
+
     return count_genre / total_animes
 
 def cumulative_distribution(prob):
+    """Calcular a distribuição cumulativa a partir de probabilidades."""
     return np.cumsum(prob)
 
 prob_X = calculate_probability(animelist, 'Action')
 prob_Y = calculate_probability(animelist, 'Adventure')
 
-probs_X = np.linspace(0, prob_X, 100)
-probs_Y = np.linspace(0, prob_Y, 100)
+if prob_X > 0 and prob_Y > 0:
+    probs_X = np.linspace(0, prob_X, 100)
+    probs_Y = np.linspace(0, prob_Y, 100)
 
-cdf_X = cumulative_distribution(probs_X)
-cdf_Y = cumulative_distribution(probs_Y)
+    cdf_X = cumulative_distribution(probs_X)
+    cdf_Y = cumulative_distribution(probs_Y)
 
-plt.figure(figsize=(10, 6))
-plt.plot(probs_X, cdf_X, label='CDF Ação', color='blue')
-plt.plot(probs_Y, cdf_Y, label='CDF Aventura', color='green')
-plt.title('Função de Distribuição Cumulativa para Ação e Aventura')
-plt.xlabel('Probabilidade')
-plt.ylabel('Distribuição Cumulativa')
-plt.legend()
-plt.grid(True)
+    plt.figure(figsize=(10, 6))
+    plt.plot(probs_X, cdf_X, label='CDF Ação', color='blue')
+    plt.plot(probs_Y, cdf_Y, label='CDF Aventura', color='green')
+    plt.title('Função de Distribuição Cumulativa para Ação e Aventura')
+    plt.xlabel('Probabilidade')
+    plt.ylabel('Distribuição Cumulativa')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
+animelist = pd.read_csv('animelist.csv')
+
+numeric_columns = animelist.select_dtypes(include=['number'])
+
+correlation_matrix = numeric_columns.corr().dropna(axis=0, how='all').dropna(axis=1, how='all')
+
+plt.figure(figsize=(12, 8))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5)
+plt.title('Matriz de Correlação', fontsize=16, fontweight='bold', pad=20)
+plt.xlabel('Variáveis')
+plt.ylabel('Variáveis')
+plt.tight_layout()
 plt.show()
